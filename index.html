@@ -3,99 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Специальное послание</title>
+    <title>Ты - моя Вселенная</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Open+Sans:wght@300;400&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            background: #fef5f9;
+            color: #5a3d5c;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url('https://transparenttextures.com/patterns/cream-paper.png');
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
         }
         
-        h1 {
-            color: #4a4a4a;
+        .rose-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b8b" d="M50 0Q60 40 90 50Q60 60 50 90Q40 60 10 50Q40 40 50 0Z"/></svg>');
+            background-size: contain;
+            opacity: 0.7;
+            animation: falling 10s linear infinite;
+            z-index: -1;
         }
         
-        .message {
-            margin: 30px 0;
+        @keyframes falling {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        
+        .header {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .title {
+            font-family: 'Marck Script', cursive;
+            font-size: 42px;
+            color: #d23669;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
             font-size: 18px;
-            line-height: 1.6;
+            color: #a18aaa;
+            font-weight: 300;
+        }
+        
+        .love-letter {
+            background: white;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 3px 20px rgba(210, 54, 105, 0.1);
+            margin: 30px 0;
+            position: relative;
+            border: 1px solid #ffd6e7;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        
+        .love-letter:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px dashed #ffb6c1;
+            border-radius: 3px;
+            pointer-events: none;
         }
         
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin: 30px 0;
+            margin: 40px 0;
         }
         
-        .gallery img {
-            width: 200px;
-            height: 200px;
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
         }
         
-        .gallery img:hover {
-            transform: scale(1.05);
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
         
-        .music-player {
-            margin: 30px 0;
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
             padding: 15px;
-            background-color: #f8f8f8;
-            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        .music-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(210, 54, 105, 0.1);
+            text-align: center;
+        }
+        
+        .music-title {
+            font-family: 'Marck Script', cursive;
+            font-size: 24px;
+            color: #d23669;
+            margin-bottom: 15px;
         }
         
         footer {
-            margin-top: 30px;
+            text-align: center;
+            margin: 60px 0 30px;
+            padding: 20px;
             font-size: 14px;
-            color: #777;
+            color: #a18aaa;
+            position: relative;
+        }
+        
+        .heart-beat {
+            font-size: 24px;
+            color: #ff6b8b;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .signature {
+            font-family: 'Marck Script', cursive;
+            font-size: 28px;
+            color: #d23669;
+            margin-top: 30px;
+            text-align: right;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Добро пожаловать!</h1>
+        <!-- Падающие лепестки роз -->
+        <div id="petals-container"></div>
         
-        <div class="music-player">
-            <p>Сейчас играет: Специальная песня для вас</p>
-            <audio controls autoplay loop>
-                <source src="ваша-песня.mp3" type="audio/mpeg">
+        <div class="header">
+            <div class="title">Ты - свет моей души</div>
+            <div class="subtitle">Этот момент, когда наши сердца бьются в унисон...</div>
+        </div>
+        
+        <div class="love-letter">
+            <p>Моя любимая,</p>
+            
+            <p>Когда я закрываю глаза, я вижу только тебя. Ты - тот самый свет, что озаряет мои darkest дни, тот самый air, без которого я не могу дышать.</p>
+            
+            <p>Ты - утро моего дня, последняя мысль перед сном. Ты - melody, что звучит в моём сердце, painting, что раскрасила мою жизнь в самые яркие colors.</p>
+            
+            <p>Я благодарю судьбу за каждый moment, проведённый с тобой. За твою улыбку, что warm, как летнее солнце. За твои глаза, в которых я тону снова и снова.</p>
+            
+            <p>Ты - моя muse, моя мечта, моя reality. С тобой я понял, что значит love без границ, без условий, без end.</p>
+            
+            <p>Пусть этот сайт останется как маленькое proof моих чувств, которые невозможно выразить words.</p>
+            
+            <div class="signature">Навсегда твой</div>
+        </div>
+        
+        <div class="music-box">
+            <div class="music-title">Наша мелодия</div>
+            <audio controls autoplay loop style="width: 100%">
+                <source src="our-song.mp3" type="audio/mpeg">
                 Ваш браузер не поддерживает аудио элемент.
             </audio>
         </div>
         
-        <div class="message">
-            <p>Дорогой друг,</p>
-            <p>Это небольшое послание создано специально для тебя. Хочу, чтобы ты знал(а), как много ты для меня значишь.</p>
-            <p>Ниже ты найдёшь несколько фотографий, которые, надеюсь, поднимут тебе настроение!</p>
-        </div>
-        
         <div class="gallery">
-            <img src="фото1.jpg" alt="Фото 1">
-            <img src="фото2.jpg" alt="Фото 2">
-            <img src="фото3.jpg" alt="Фото 3">
-            <img src="фото4.jpg" alt="Фото 4">
+            <div class="gallery-item">
+                <img src="photo1.jpg" alt="Наша история начинается">
+                <div class="gallery-caption">Момент, когда я понял - это навсегда</div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo2.jpg" alt="Ты - мое счастье">
+                <div class="gallery-caption">Твоя улыбка - мой самый ценный treasure</div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo3.jpg" alt="Вместе мы - целая вселенная">
+                <div class="gallery-caption">Две души - одно heartbeat</div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo4.jpg" alt="Любовь без границ">
+                <div class="gallery-caption">Навсегда в этом moment</div>
+            </div>
         </div>
         
         <footer>
-            <p>Создано с ❤️ специально для тебя</p>
+            <p>Создано с <span class="heart-beat">❤</span> для единственной</p>
+            <p>Каждый pixel здесь пропитан любовью</p>
         </footer>
     </div>
+
+    <script>
+        // Создаем падающие лепестки роз
+        function createPetals() {
+            const container = document.getElementById('petals-container');
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'rose-petal';
+                
+                // Рандомные параметры
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.width = (Math.random() * 15 + 10) + 'px';
+                petal.style.height = petal.style.width;
+                petal.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                container.appendChild(petal);
+            }
+        }
+        
+        // Запускаем при загрузке страницы
+        window.onload = function() {
+            createPetals();
+            
+            // Воспроизводим музыку (некоторые браузеры блокируют autoplay)
+            const audio = document.querySelector('audio');
+            audio.volume = 0.7; // Уменьшаем громкость
+            
+            document.addEventListener('click', function() {
+                audio.play().catch(e => console.log(e));
+            }, { once: true });
+        };
+    </script>
 </body>
 </html>
