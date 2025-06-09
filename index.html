@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ты - моя Вселенная</title>
+    <title>Ты - мой ангел</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Open+Sans:wght@300;400&display=swap');
         
@@ -190,56 +190,54 @@
         <div id="petals-container"></div>
         
         <div class="header">
-            <div class="title">Ты - свет моей души</div>
-            <div class="subtitle">Этот момент, когда наши сердца бьются в унисон...</div>
+            <div class="title">Angel Falls - Ты мой ангел</div>
+            <div class="subtitle">Как водопад ангелов - твоя любовь...</div>
         </div>
         
         <div class="love-letter">
             <p>Моя любимая,</p>
             
-            <p>Когда я закрываю глаза, я вижу только тебя. Ты - тот самый свет, что озаряет мои darkest дни, тот самый air, без которого я не могу дышать.</p>
+            <p>Когда звучит "Angel Falls", я вспоминаю, как ты вошла в мою жизнь - мягко, как падающий лепесток, и так же необратимо, как водопад.</p>
             
-            <p>Ты - утро моего дня, последняя мысль перед сном. Ты - melody, что звучит в моём сердце, painting, что раскрасила мою жизнь в самые яркие colors.</p>
+            <p>Эта песня - о нас. О том, как твоя любовь низвергается в мою душу, смывая все сомнения, наполняя светом каждый уголок моего сердца.</p>
             
-            <p>Я благодарю судьбу за каждый moment, проведённый с тобой. За твою улыбку, что warm, как летнее солнце. За твои глаза, в которых я тону снова и снова.</p>
+            <p>Ты - мой личный ангел, мой водопад счастья. Слушая эту мелодию, я закрываю глаза и вижу тебя - прекрасную, нежную, мою.</p>
             
-            <p>Ты - моя muse, моя мечта, моя reality. С тобой я понял, что значит love без границ, без условий, без end.</p>
-            
-            <p>Пусть этот сайт останется как маленькое proof моих чувств, которые невозможно выразить words.</p>
-            
-            <div class="signature">Навсегда твой</div>
+            <div class="signature">Тот, кто тонет в тебе</div>
         </div>
         
         <div class="music-box">
-            <div class="music-title">Наша мелодия</div>
+            <div class="music-title">Angel Falls - Наша песня</div>
             <audio controls autoplay loop style="width: 100%">
-                <source src="our-song.mp3" type="audio/mpeg">
-                Ваш браузер не поддерживает аудио элемент.
+                <!-- Вот ссылка на песню (можете заменить на свою) -->
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио
             </audio>
+            <p><small>Если музыка не играет, нажмите на кнопку play</small></p>
         </div>
         
         <div class="gallery">
             <div class="gallery-item">
-                <img src="photo1.jpg" alt="Наша история начинается">
-                <div class="gallery-caption">Момент, когда я понял - это навсегда</div>
+                <img src="photo1.jpg" alt="Наш первый ангельский момент">
+                <div class="gallery-caption">Когда я впервые назвал тебя своим ангелом</div>
             </div>
             <div class="gallery-item">
-                <img src="photo2.jpg" alt="Ты - мое счастье">
-                <div class="gallery-caption">Твоя улыбка - мой самый ценный treasure</div>
+                <img src="photo2.jpg" alt="Ты - мой водопад счастья">
+                <div class="gallery-caption">Такой же прекрасный, как Angel Falls</div>
             </div>
             <div class="gallery-item">
-                <img src="photo3.jpg" alt="Вместе мы - целая вселенная">
-                <div class="gallery-caption">Две души - одно heartbeat</div>
+                <img src="photo3.jpg" alt="Вместе под звуки нашей песни">
+                <div class="gallery-caption">Под аккорды, которые стали нашими</div>
             </div>
             <div class="gallery-item">
-                <img src="photo4.jpg" alt="Любовь без границ">
-                <div class="gallery-caption">Навсегда в этом moment</div>
+                <img src="photo4.jpg" alt="Любовь, как музыка">
+                <div class="gallery-caption">Мелодия, которая никогда не закончится</div>
             </div>
         </div>
         
         <footer>
-            <p>Создано с <span class="heart-beat">❤</span> для единственной</p>
-            <p>Каждый pixel здесь пропитан любовью</p>
+            <p>Создано под звуки "Angel Falls" <span class="heart-beat">❤</span></p>
+            <p>Как эта песня - бесконечно для тебя</p>
         </footer>
     </div>
 
@@ -269,10 +267,11 @@
         window.onload = function() {
             createPetals();
             
-            // Воспроизводим музыку (некоторые браузеры блокируют autoplay)
+            // Воспроизводим музыку
             const audio = document.querySelector('audio');
-            audio.volume = 0.7; // Уменьшаем громкость
+            audio.volume = 0.5; // Умеренная громкость
             
+            // Разрешаем автовоспроизведение после клика
             document.addEventListener('click', function() {
                 audio.play().catch(e => console.log(e));
             }, { once: true });
