@@ -182,11 +182,22 @@
             margin-top: 30px;
             text-align: right;
         }
+        
+        /* Добавленные исправления */
+        audio {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .music-box p small {
+            display: block;
+            margin-top: 10px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Падающие лепестки роз -->
         <div id="petals-container"></div>
         
         <div class="header">
@@ -196,21 +207,16 @@
         
         <div class="love-letter">
             <p>Моя любимая,</p>
-            
             <p>Когда звучит "Angel Falls", я вспоминаю, как ты вошла в мою жизнь - мягко, как падающий лепесток, и так же необратимо, как водопад.</p>
-            
             <p>Эта песня - о нас. О том, как твоя любовь низвергается в мою душу, смывая все сомнения, наполняя светом каждый уголок моего сердца.</p>
-            
             <p>Ты - мой личный ангел, мой водопад счастья. Слушая эту мелодию, я закрываю глаза и вижу тебя - прекрасную, нежную, мою.</p>
-            
             <div class="signature">Тот, кто тонет в тебе</div>
         </div>
         
         <div class="music-box">
             <div class="music-title">Angel Falls - Наша песня</div>
-            <audio controls autoplay loop style="width: 100%">
-                <!-- Вот ссылка на песню (можете заменить на свою) -->
-                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            <audio controls autoplay loop>
+                <source src="angel-falls.mp3" type="audio/mpeg">
                 Ваш браузер не поддерживает аудио
             </audio>
             <p><small>Если музыка не играет, нажмите на кнопку play</small></p>
@@ -251,7 +257,6 @@
                 const petal = document.createElement('div');
                 petal.className = 'rose-petal';
                 
-                // Рандомные параметры
                 petal.style.left = Math.random() * 100 + 'vw';
                 petal.style.width = (Math.random() * 15 + 10) + 'px';
                 petal.style.height = petal.style.width;
@@ -264,18 +269,17 @@
         }
         
         // Запускаем при загрузке страницы
-        window.onload = function() {
+        window.addEventListener('DOMContentLoaded', function() {
             createPetals();
             
-            // Воспроизводим музыку
             const audio = document.querySelector('audio');
-            audio.volume = 0.5; // Умеренная громкость
+            audio.volume = 0.5;
             
             // Разрешаем автовоспроизведение после клика
             document.addEventListener('click', function() {
-                audio.play().catch(e => console.log(e));
+                audio.play().catch(e => console.log("Автовоспроизведение заблокировано: ", e));
             }, { once: true });
-        };
+        });
     </script>
 </body>
 </html>
