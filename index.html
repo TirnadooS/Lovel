@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ты - мой ангел</title>
+    <title>Для самой любимой</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Open+Sans:wght@300;400&display=swap');
         
@@ -183,16 +183,22 @@
             text-align: right;
         }
         
-        /* Добавленные исправления */
-        audio {
-            width: 100%;
-            max-width: 400px;
+        /* Стили для кнопки воспроизведения */
+        .play-button {
+            background: #d23669;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
         }
         
-        .music-box p small {
-            display: block;
-            margin-top: 10px;
-            color: #888;
+        .play-button:hover {
+            background: #ff6b8b;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -207,43 +213,41 @@
         
         <div class="love-letter">
             <p>Моя любимая,</p>
-            <p>Когда звучит "Angel Falls", я вспоминаю, как ты вошла в мою жизнь - мягко, как падающий лепесток, и так же необратимо, как водопад.</p>
-            <p>Эта песня - о нас. О том, как твоя любовь низвергается в мою душу, смывая все сомнения, наполняя светом каждый уголок моего сердца.</p>
-            <p>Ты - мой личный ангел, мой водопад счастья. Слушая эту мелодию, я закрываю глаза и вижу тебя - прекрасную, нежную, мою.</p>
-            <div class="signature">Тот, кто тонет в тебе</div>
+            <p>Когда звучит "Angel Falls", я вспоминаю, как ты вошла в мою жизнь...</p>
+            <div class="signature">Твой любимый</div>
         </div>
         
         <div class="music-box">
-            <div class="music-title">Angel Falls - Наша песня</div>
-            <audio controls autoplay loop>
-                <source src="angel-falls.mp3" type="audio/mpeg">
+            <div class="music-title">Наша песня</div>
+            <audio id="loveSong" controls loop>
+                <source src="Angel-Falls.mp3" type="audio/mpeg">
                 Ваш браузер не поддерживает аудио
             </audio>
-            <p><small>Если музыка не играет, нажмите на кнопку play</small></p>
+            <button class="play-button" id="playButton">▶ Включить музыку</button>
+            <p><small>Нажмите кнопку, чтобы начать проигрывание</small></p>
         </div>
         
         <div class="gallery">
             <div class="gallery-item">
-                <img src="photo1.jpg" alt="Наш первый ангельский момент">
-                <div class="gallery-caption">Когда я впервые назвал тебя своим ангелом</div>
+                <img src="photo1.jpg" alt="Наше фото 1">
+                <div class="gallery-caption">Наш первый момент</div>
             </div>
             <div class="gallery-item">
-                <img src="photo2.jpg" alt="Ты - мой водопад счастья">
-                <div class="gallery-caption">Такой же прекрасный, как Angel Falls</div>
+                <img src="photo2.jpg" alt="Наше фото 2">
+                <div class="gallery-caption">Счастливые мгновения</div>
             </div>
             <div class="gallery-item">
-                <img src="photo3.jpg" alt="Вместе под звуки нашей песни">
-                <div class="gallery-caption">Под аккорды, которые стали нашими</div>
+                <img src="photo3.jpg" alt="Наше фото 3">
+                <div class="gallery-caption">Вместе навсегда</div>
             </div>
             <div class="gallery-item">
-                <img src="photo4.jpg" alt="Любовь, как музыка">
-                <div class="gallery-caption">Мелодия, которая никогда не закончится</div>
+                <img src="photo4.jpg" alt="Наше фото 4">
+                <div class="gallery-caption">Любовь без границ</div>
             </div>
         </div>
         
         <footer>
-            <p>Создано под звуки "Angel Falls" <span class="heart-beat">❤</span></p>
-            <p>Как эта песня - бесконечно для тебя</p>
+            <p>Создано с <span class="heart-beat">❤</span> для тебя</p>
         </footer>
     </div>
 
@@ -267,18 +271,39 @@
                 container.appendChild(petal);
             }
         }
+
+        // Управление музыкой
+        const audio = document.getElementById('loveSong');
+        const playButton = document.getElementById('playButton');
         
-        // Запускаем при загрузке страницы
+        // Попытка автовоспроизведения
+        function tryAutoplay() {
+            audio.volume = 0.7;
+            const promise = audio.play();
+            
+            if (promise !== undefined) {
+                promise.catch(error => {
+                    // Автовоспроизведение заблокировано
+                    playButton.style.display = 'inline-block';
+                });
+            }
+        }
+        
+        // Клик по кнопке воспроизведения
+        playButton.addEventListener('click', function() {
+            audio.play();
+            playButton.style.display = 'none';
+        });
+        
+        // Запуск при загрузке страницы
         window.addEventListener('DOMContentLoaded', function() {
             createPetals();
+            tryAutoplay();
             
-            const audio = document.querySelector('audio');
-            audio.volume = 0.5;
-            
-            // Разрешаем автовоспроизведение после клика
-            document.addEventListener('click', function() {
-                audio.play().catch(e => console.log("Автовоспроизведение заблокировано: ", e));
-            }, { once: true });
+            // Скрыть кнопку, если музыка уже играет
+            audio.addEventListener('playing', function() {
+                playButton.style.display = 'none';
+            });
         });
     </script>
 </body>
